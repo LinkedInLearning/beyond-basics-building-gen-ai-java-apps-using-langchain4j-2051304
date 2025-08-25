@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+def lc4jVersion = "1.3.0"
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.3')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+
+    implementation "dev.langchain4j:langchain4j:${lc4jVersion}"
+    implementation "dev.langchain4j:langchain4j-open-ai:${lc4jVersion}"
+    implementation "dev.langchain4j:langchain4j-google-ai-gemini:${lc4jVersion}"
+    implementation "dev.langchain4j:langchain4j-anthropic:${lc4jVersion}"
+    implementation "dev.langchain4j:langchain4j-mistral-ai:${lc4jVersion}"
+
+    //implementation 'org.slf4j:slf4j-nop:2.0.17'
+    implementation 'ch.qos.logback:logback-classic:1.4.14'
+
+}
+
+test {
+    useJUnitPlatform()
+}
