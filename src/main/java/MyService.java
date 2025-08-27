@@ -6,6 +6,7 @@ import dev.langchain4j.service.SystemMessage;
 import dev.langchain4j.service.UserMessage;
 
 public class MyService {
+
     interface Consultant {
         @SystemMessage("You are a polite technology consultant")
         @UserMessage("What are the benefits of Java in 5 lines")
