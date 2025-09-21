@@ -7,7 +7,6 @@ import dev.langchain4j.model.chat.ChatModel;
 import dev.langchain4j.model.openai.OpenAiChatModel;
 import dev.langchain4j.model.openai.OpenAiChatModelName;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class ChatContext {
