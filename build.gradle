@@ -21,8 +21,10 @@ dependencies {
     implementation "dev.langchain4j:langchain4j-anthropic:${lc4jVersion}"
     implementation "dev.langchain4j:langchain4j-mistral-ai:${lc4jVersion}"
 
-    //implementation 'org.slf4j:slf4j-nop:2.0.17'
-    implementation 'ch.qos.logback:logback-classic:1.4.14'
+    implementation("dev.langchain4j:langchain4j-document-parser-apache-pdfbox:1.4.0-beta10") // PDF → text
+
+    implementation 'org.slf4j:slf4j-nop:2.0.17'
+    //implementation 'ch.qos.logback:logback-classic:1.4.14'
 
 }
 
