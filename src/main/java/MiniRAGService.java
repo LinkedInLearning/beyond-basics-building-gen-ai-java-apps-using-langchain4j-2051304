@@ -107,25 +107,4 @@ public class MiniRAGService {
                 .modelName(TEXT_EMBEDDING_3_SMALL)
                 .build();
     }
-
-    /*private class Chatbot {
-        private ChatModel chatModel;
-        private EmbeddingModel embeddingModel;
-        private EmbeddingStore embeddingStore;
-        private int maxResults;
-        private int maxMemory;
-        private float minScore;
-
-        Chatbot(ChatModel chatModel, EmbeddingModel embModel, EmbeddingStore embStore, int maxres, int maxmem, float minscore) {
-            this.chatModel = chatModel;
-            this.embeddingModel = embeddingModel;
-            this.embeddingStore = embeddingStore;
-            this.maxResults = maxres;
-            this.maxMemory = maxmem;
-            this.minScore = minscore;
-        }
-        Chatbot(ChatModel chatModel) {
-            this.chatModel = chatModel;
-        }
-    }*/
 }
