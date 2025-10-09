@@ -63,7 +63,7 @@ public class EmbeddingInMemoryService {
     }
 
     public static MatchAssistant createMatchAssistant(ChatModel chatModel, String dir) {
-        // Load all .txt and .pdf files in dir
+        // Load all .txt and .pdf files in dir   (note: "{*.txt,**/*.txt}" works for recursive loading)
         List<Document> txtDocuments = loadDocuments(toPath(dir), glob("*.txt"), new TextDocumentParser());
         List<Document> pdfDocuments = loadDocuments(toPath(dir), glob("*.pdf"), new ApachePdfBoxDocumentParser());
 

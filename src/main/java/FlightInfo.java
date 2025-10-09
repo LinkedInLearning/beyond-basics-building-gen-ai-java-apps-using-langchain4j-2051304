@@ -18,23 +18,39 @@ public class FlightInfo {
                 .build();
 
         ChatMemory cm = MessageWindowChatMemory.withMaxMessages(10);
+
+// An effective system message that controls/constrains the method choices is critical.
         cm.add(SystemMessage.from("You are a helpful, and informative flight agent.  Only use the methods I have described."));  // just for illustrative purposes
 
         FlightAssistant assistant = AiServices.builder(FlightAssistant.class)
                 .chatModel(model)
                 .tools(new FlightInfoTools())
-                .chatMemory(cm)         // An effective system message that controls/constrains the method choices is critical.
+                .chatMemory(cm)
                 .build();
+
+        flightHelp(assistant, 5);       // Call several times to show stochastic nature of output
+    }
+
+    /**
+     * flighHelp(FlightAssistant infoAssistant, int iterations) - call tools multiple times
+     * @param infoAssistant - AiService
+     * @param iterations - how many times to repeat
+     */
+    private static void flightHelp(FlightAssistant infoAssistant, int iterations) {
 
         String response;
 
-        response = assistant.flightInfo("I need the status of Flight UA1011");
-        System.out.println(response);
+        for (int i = 0; i < iterations; i++) {
+            response = infoAssistant.flightInfo("I need the status of Flight UA1011");
+            System.out.println(response);
 
-        response = assistant.flightInfo("What type of aircraft is it?");
-        System.out.println(response);
+            response = infoAssistant.flightInfo("What type of aircraft is it?");
+            System.out.println(response);
 
-        response = assistant.flightInfo("What was its cost");
-        System.out.println(response);
+            response = infoAssistant.flightInfo("What was its cost");
+            System.out.println(response);
+
+            System.out.println("=========================");
+        }
     }
 }
