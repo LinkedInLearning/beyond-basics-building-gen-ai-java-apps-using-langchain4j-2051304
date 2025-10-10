@@ -2,6 +2,9 @@ import dev.langchain4j.agent.tool.Tool;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * FlightInfoTools - Lab 10 - Showing a simple AiService with a collection of Tools (methods)
+ */
 public class FlightInfoTools {
     private final Logger logger = LoggerFactory.getLogger(FlightInfo.class);
 

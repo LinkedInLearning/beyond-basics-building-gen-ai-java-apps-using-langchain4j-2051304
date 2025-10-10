@@ -6,6 +6,9 @@ import dev.langchain4j.model.openai.OpenAiChatModel;
 import dev.langchain4j.model.openai.OpenAiChatModelName;
 import dev.langchain4j.service.AiServices;
 
+/**
+ * FlightInfo - Lab 10 - Showing a simple AiService with a collection of Tools (methods)
+ */
 public class FlightInfo {
 
     public static void main(String[] args) {
