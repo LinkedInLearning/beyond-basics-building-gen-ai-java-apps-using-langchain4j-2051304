@@ -6,8 +6,9 @@ import dev.langchain4j.model.openai.OpenAiChatModelName;
 import java.util.Scanner;
 
 /**
- * ChatNoContext - demonstrate accessing an LLM without supplying context
+ * Lab 1 - ChatNoContext - demonstrate accessing an LLM without supplying context
  */
+
 public class ChatNoContext {
     public static void main(String[] args) {
         Scanner userinput;      // user inputted line as a Scanner
