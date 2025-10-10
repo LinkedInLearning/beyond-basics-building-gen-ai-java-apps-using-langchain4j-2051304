@@ -11,6 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * MultiUserChatMemory - Lab 4 - ChatMemory that can hold different contexts
+ */
 public class MultiUserChatMemory {
     public interface Support {
         @SystemMessage("Respond as a helpful and polite customer support representative.")
