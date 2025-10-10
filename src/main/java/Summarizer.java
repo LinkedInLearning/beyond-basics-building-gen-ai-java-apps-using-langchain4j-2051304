@@ -14,6 +14,9 @@ import java.util.*;
 
 import static dev.langchain4j.model.anthropic.AnthropicChatModelName.CLAUDE_3_5_SONNET_20241022;
 
+/**
+ * Summarizer - Lab 2 - Another example of using PromptTemplate
+ */
 public class Summarizer {
     public static void main(String[] args) throws IOException{
         List<ChatMessage> messages;

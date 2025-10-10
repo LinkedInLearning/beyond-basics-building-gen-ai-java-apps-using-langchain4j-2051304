@@ -9,6 +9,9 @@ import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * MySimpleTemplate - Lab 2 - Demonstration of PromptTemplate with a few template variables
+ */
 public class MySimpleTemplate {
     public static void main(String[] args) {
         ChatModel cmodel = OpenAiChatModel.builder()
