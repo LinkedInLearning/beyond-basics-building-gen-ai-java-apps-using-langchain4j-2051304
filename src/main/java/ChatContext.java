@@ -9,6 +9,9 @@ import dev.langchain4j.model.openai.OpenAiChatModelName;
 
 import java.util.Scanner;
 
+/**
+ * ChatContext - demonstrate accessing an LLM by supplying context (see ChatNoContext for no context added)
+ */
 public class ChatContext {
     public static void main(String[] args) {
         Scanner userinput;
