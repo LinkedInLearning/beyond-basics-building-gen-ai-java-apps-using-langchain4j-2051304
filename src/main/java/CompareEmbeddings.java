@@ -8,6 +8,9 @@ import java.util.List;
 
 import static dev.langchain4j.model.openai.OpenAiEmbeddingModelName.TEXT_EMBEDDING_3_SMALL;
 
+/**
+ * CompareEmbeddings - Lab 7 - Demonstrating calculating similarity using cosine algorithm
+ */
 public class CompareEmbeddings {
     public static void main(String[] args) throws IOException {
 
