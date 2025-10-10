@@ -32,6 +32,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * EmbeddingInMemoryService - Lab 9 - Load multiple .txt/.pdf files into an EmbeddingStore
+ */
 public class EmbeddingInMemoryService {
     interface MatchAssistant {
         @SystemMessage("You are a polite conversational assistant")
