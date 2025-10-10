@@ -16,6 +16,9 @@ import java.util.stream.Stream;
 
 import static dev.langchain4j.model.openai.OpenAiEmbeddingModelName.TEXT_EMBEDDING_3_SMALL;
 
+/**
+ * EmbeddingInMemory - Lab 8 - Creating an in-memory EmbeddingStore and searching for similar text
+ */
 public class EmbeddingInMemory {
 
     public static void main(String[] args) {
