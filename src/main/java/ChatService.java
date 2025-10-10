@@ -6,6 +6,9 @@ import dev.langchain4j.service.AiServices;
 
 import java.util.Scanner;
 
+/**
+ * ChatService - Lab 3 - Demonstration of simple chatbot using an AiService
+ */
 public class ChatService {
 
     public interface ChatBot {

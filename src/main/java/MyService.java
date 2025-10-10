@@ -5,6 +5,10 @@ import dev.langchain4j.service.AiServices;
 import dev.langchain4j.service.SystemMessage;
 import dev.langchain4j.service.UserMessage;
 
+/**
+ * MyService - Lab 3 - Demonstration of simple chatbot using an AiService with @UserMessage and @SystemMessage
+ */
+
 public class MyService {
 
     interface Consultant {
