@@ -23,7 +23,7 @@ public class SimpleStream {
                 UserMessage.from("Explain why Java is useful for creating GenAI applications.")
         );
 
-        CountDownLatch done = new CountDownLatch(1);    // app can finish before LLM responds!
+        //CountDownLatch done = new CountDownLatch(1);    // app can finish before LLM responds!
 
         StreamingChatResponseHandler handler = new StreamingChatResponseHandler() {
             @Override
@@ -32,17 +32,17 @@ public class SimpleStream {
             }
             @Override
             public void onCompleteResponse(ChatResponse complete) {
-                done.countDown();
+                //done.countDown();
             }
             @Override
             public void onError(Throwable error) {
                 error.printStackTrace();
-                done.countDown();
+                //done.countDown();
             }
         };
 
         model.chat(messages, handler);
 
-        done.await();
+        //done.await();
     }
 }
