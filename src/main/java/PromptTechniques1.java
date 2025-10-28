@@ -3,19 +3,19 @@ import dev.langchain4j.model.openai.OpenAiChatModel;
 import dev.langchain4j.model.openai.OpenAiChatModelName;
 
 public class PromptTechniques1 {
-/*
-Background:
-[Insert all relevant background information, quotes, or any additional information.]
+    /*
+    Background:
+    [Insert all relevant background information, quotes, or any additional information.]
 
-Task:
-[Clearly state the specific action or question.]
- */
+    Task:
+    [Clearly state the specific action or question.]
+     */
     final static String example = """
-        Background:
-        The user is a first-year law student studying contract law. They have read sections on offer, acceptance, and consideration.
-        
-        Task:
-        What are three real-world examples of consideration in contract law?
+            Background:
+            The user is a first-year law student studying contract law. They have read sections on offer, acceptance, and consideration.
+            
+            Task:
+            What are three real-world examples of consideration in contract law?
             """;
 
     public static void main(String[] args) {

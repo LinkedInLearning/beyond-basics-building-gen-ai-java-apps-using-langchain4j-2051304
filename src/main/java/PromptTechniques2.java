@@ -8,7 +8,7 @@ public class PromptTechniques2 {
        Background: [insert relevant background data]
        Task: [description of user request ]
        Constraints: [style, tone, output format, etc.]
- */
+    */
     final static String example = """
             You are a senior legal analyst.
             Background:
