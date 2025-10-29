@@ -10,6 +10,8 @@ import static dev.langchain4j.model.openai.OpenAiEmbeddingModelName.TEXT_EMBEDDI
 
 /**
  * CompareEmbeddings - Lab 7 - Demonstrating calculating similarity using cosine algorithm
+ *                              Cosine similarity is different than Euclidean similarity
+ *                              Cosine similarity - 0-1, the larger the number, the more similar the vectors
  */
 public class CompareEmbeddings {
     public static void main(String[] args) throws IOException {
@@ -23,8 +25,9 @@ public class CompareEmbeddings {
         List<Float> two = getEmbeddingVec(model, "Good pizza requires good flour and good water");
 
         double similarity = cosineSimilarity(FloatList2doubleArray(one), FloatList2doubleArray(two));
-        System.out.println("Cosine Similarity: " + similarity);
-        //System.out.println("Cosine Distance: " + (1 - similarity));
+        System.out.println("Cosine Similarity: " + similarity);         // how aligned two vectors are
+        //System.out.println("Cosine Distance: " + (1 - similarity));     // how far apart two vectors are
+                                                                        // Different than Euclidean algorithm
     }
 
     public static List<Float> getEmbeddingVec(EmbeddingModel model, String input) {
