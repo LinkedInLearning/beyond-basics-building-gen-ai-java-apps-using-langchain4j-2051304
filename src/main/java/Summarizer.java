@@ -13,6 +13,7 @@ import java.nio.file.Path;
 import java.util.*;
 
 import static dev.langchain4j.model.anthropic.AnthropicChatModelName.CLAUDE_3_5_SONNET_20241022;
+import static dev.langchain4j.model.anthropic.AnthropicChatModelName.CLAUDE_SONNET_4_5_20250929;
 
 /**
  * Summarizer - Lab 2 - Another example of using PromptTemplate
@@ -26,7 +27,7 @@ public class Summarizer {
 
         ChatModel model = AnthropicChatModel.builder()
                 .apiKey(System.getenv("ANTHROPIC_API_KEY"))
-                .modelName(CLAUDE_3_5_SONNET_20241022)
+                .modelName(CLAUDE_SONNET_4_5_20250929)
                 .build();
 
         while (true) {
