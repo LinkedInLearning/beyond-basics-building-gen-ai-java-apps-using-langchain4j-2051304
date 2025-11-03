@@ -2,7 +2,7 @@ import dev.langchain4j.model.chat.ChatModel;
 import dev.langchain4j.model.openai.OpenAiChatModel;
 import dev.langchain4j.model.openai.OpenAiChatModelName;
 
-public class PromptTechniques4 {
+public class PromptTechniques2_bonus {
     /*
     Here is the background: [insert context]
     Follow this process:
@@ -13,15 +13,15 @@ public class PromptTechniques4 {
     */
     final static String example = """
             Here is the background:
-              Our Java-based payment gateway started failing on certain transactions after a recent update. The error logs show NullPointerExceptions originating from the PaymentProcessor class. The failures occur only for transactions in EUR currency when processed through the new DiscountService. QA confirms the issue is reproducible in staging.
+              Our e-commerce store saw a 25% drop in sales last month. The biggest losses came from our outdoor furniture line, which dropped 40%. Website analytics show slower page load times on product pages and a spike in abandoned carts. Customer feedback mentions frustration with checkout errors on mobile devices.
             
-            Follow this process:
-             1. Identify relevant details from the background.
-             2. Explain how these details affect the task.
-             3. Provide the final answer.
+             Follow this process:
+              1. Identify relevant details from the background.
+              2. Explain how these details affect the task.
+              3. Provide the final answer.
             
             Task:
-            Suggest the most likely cause and the first debugging step.
+            Recommend the top two actions to reverse the sales decline.
             """;
 
     public static void main(String[] args) {
