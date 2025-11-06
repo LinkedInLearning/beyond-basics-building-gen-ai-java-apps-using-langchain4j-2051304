@@ -25,16 +25,19 @@ public class CompareEmbeddings {
         List<Float> two = getEmbeddingVec(model, "Good pizza requires good flour and good water");
 
         double similarity = cosineSimilarity(FloatList2doubleArray(one), FloatList2doubleArray(two));
-        System.out.println("Cosine Similarity: " + similarity);         // how aligned two vectors are
-        //System.out.println("Cosine Distance: " + (1 - similarity));     // how far apart two vectors are
-                                                                        // Different than Euclidean algorithm
+        System.out.println("Cosine Similarity: " + similarity);         // how aligned (similar) two vectors are.
+                                                                        // 0 [not similar] - 1 [similar]
+        //System.out.println("Cosine Distance: " + (1 - similarity));   // how far apart two vectors are
+                                                                        // Different from Euclidean distance algorithm
     }
 
+    // retrieve an Embedding given an embedding model and a string
     public static List<Float> getEmbeddingVec(EmbeddingModel model, String input) {
         Response<Embedding> response = model.embed(input);
         return response.content().vectorAsList();
     }
 
+    // convenience method to convert float to double
     public static double[] FloatList2doubleArray(List<Float> floatList) {
         double[] result = new double[floatList.size()];
         for (int i = 0; i < floatList.size(); i++) {
@@ -43,6 +46,7 @@ public class CompareEmbeddings {
         return result;
     }
 
+    // calculate dot-product of 2 vectors
     public static double dotProduct(double[] vec1, double[] vec2) {
         double dotProduct = 0;
         for (int i = 0; i < vec1.length; i++) {
@@ -51,7 +55,7 @@ public class CompareEmbeddings {
         return dotProduct;
     }
 
-    // Function to calculate magnitude of a vector
+    // calculate magnitude of a vector
     public static double magnitude(double[] vec) {
         double sum = 0;
         for (double v : vec) {
@@ -60,7 +64,7 @@ public class CompareEmbeddings {
         return Math.sqrt(sum);
     }
 
-    // Function to calculate cosine similarity between two embedding vectors
+    // calculate cosine similarity between two embedding vectors
     public static double cosineSimilarity(double[] vec1, double[] vec2) {
         double dotProduct = dotProduct(vec1, vec2);
         double magnitudeVec1 = magnitude(vec1);
@@ -72,5 +76,4 @@ public class CompareEmbeddings {
             return dotProduct / (magnitudeVec1 * magnitudeVec2);
         }
     }
-
 }
