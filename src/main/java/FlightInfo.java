@@ -15,9 +15,7 @@ public class FlightInfo {
         ChatModel model = OpenAiChatModel.builder()
                 .apiKey(System.getenv("OPENAI_API_KEY"))
                 .modelName(OpenAiChatModelName.GPT_4_O)
-                .strictTools(true)
                 .logRequests(true)
-                //.logResponses(true)
                 .build();
 
         ChatMemory cm = MessageWindowChatMemory.withMaxMessages(10);
