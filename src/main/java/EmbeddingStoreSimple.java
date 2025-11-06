@@ -34,6 +34,5 @@ public class EmbeddingStoreSimple {
 
         ingestor.ingest(mydoc);         // load strings and embeddings into DB
                                         // Need to run in debug mode and inspect the contents of  'estore'
-                                        // As of v1.5, no high-level ingestion monitoring
     }
 }
