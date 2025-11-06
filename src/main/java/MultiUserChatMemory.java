@@ -41,7 +41,7 @@ public class MultiUserChatMemory {
             if (cmdline.isBlank())       // If nothing, do nothing
                 continue;
 
-            List<String> commands = simpleParser(cmdline);  // cheapo parser - good enough for our example
+            List<String> commands = simpleParser(cmdline);  // cheapo parser that uses ":" to separate the user from the prompt
             if (commands.size() != 2)
                 continue;
 
