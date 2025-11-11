@@ -1,5 +1,6 @@
 import java.io.Console;
 import java.time.Duration;
+import java.util.Scanner;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
@@ -41,14 +42,16 @@ class ServicesStream {
                 .build();
 
         String pstring = "\nCmd> ";
-
         Set<String> set = Set.of("exit", "quit", "bye");
-        Console console = System.console();
 
         while (true) {
-            question = console.readLine(pstring);
+
+            String question = getUserInput(pstring);
             if (set.contains(question.toLowerCase()))
                 break;
+
+            if (question.isBlank())       // If nothing, do nothing
+                continue;
 
             CompletableFuture<ChatResponse> future = new CompletableFuture<>();
             TokenStream stream = consultant.chat(question);
@@ -62,5 +65,17 @@ class ServicesStream {
         }
 
         System.exit(0);
+    }
+
+    /**
+     * getUserInput(pstring) - return string from  user
+     * @return
+     */
+    public static String getUserInput(String pstring) {
+        System.out.print(pstring);
+        var userinput = new Scanner(System.in);
+        String cmdline = userinput.nextLine();
+
+       return cmdline;
     }
 }

@@ -1,6 +1,5 @@
 import dev.langchain4j.memory.chat.MessageWindowChatMemory;
 import dev.langchain4j.model.chat.StreamingChatModel;
-import dev.langchain4j.model.chat.response.ChatResponse;
 import dev.langchain4j.model.openai.OpenAiStreamingChatModel;
 import dev.langchain4j.service.AiServices;
 import dev.langchain4j.service.SystemMessage;
@@ -9,8 +8,8 @@ import dev.langchain4j.service.UserMessage;
 
 import java.io.Console;
 import java.time.Duration;
+import java.util.Scanner;
 import java.util.Set;
-import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CountDownLatch;
 
 import static dev.langchain4j.model.openai.OpenAiChatModelName.GPT_4_O_MINI;
@@ -40,14 +39,15 @@ public class ServicesStreamLatch {
                 .build();
 
         String pstring = "\nCmd> ";
-
         Set<String> set = Set.of("exit", "quit", "bye");
-        Console console = System.console();
 
         while (true) {
-            question = console.readLine(pstring);
+            String question = getUserInput(pstring);
             if (set.contains(question.toLowerCase()))
                 break;
+
+            if (question.isBlank())       // If nothing, do nothing
+                continue;
 
             var latch = new CountDownLatch(1);
 
@@ -62,5 +62,17 @@ public class ServicesStreamLatch {
 
             latch.await();
         }
+    }
+
+    /**
+     * getUserInput(pstring) - return string from  user
+     * @return
+     */
+    public static String getUserInput(String pstring) {
+        System.out.print(pstring);
+        var userinput = new Scanner(System.in);
+        String cmdline = userinput.nextLine();
+
+        return cmdline;
     }
 }
