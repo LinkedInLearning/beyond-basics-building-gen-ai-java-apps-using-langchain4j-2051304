@@ -5,9 +5,13 @@ import dev.langchain4j.model.output.Response;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import static dev.langchain4j.model.openai.OpenAiEmbeddingModelName.TEXT_EMBEDDING_3_SMALL;
 
@@ -24,8 +28,8 @@ public class MostSimilar {
         List<Float> one = getEmbeddingVec(model, "I am interested in cooking and good food.");
 
         // Read file of strings into a list
-        List<String> fstrings = fileToListStrings(DEFAULT_DATA);
-        List<Float> similarities = new ArrayList<>();
+        List<String> fstrings = Files.readAllLines(Path.of(DEFAULT_DATA), StandardCharsets.UTF_8);
+        List<Float> similarities = new ArrayList<>();      // Collection of distances.  Smaller is more similar
 
         // Iterate through List and calculate the cosine similarity for each line in the file compared to the user's input
         for (String fs : fstrings) {
@@ -34,44 +38,48 @@ public class MostSimilar {
 
             List<Float> fsembedding = getEmbeddingVec(model, fs);
             double similarity = cosineSimilarity(FloatList2doubleArray(one), FloatList2doubleArray(fsembedding));
-            similarities.add(1 - (float) similarity);     // Save the cosine similarities for sorting later
+            similarities.add((float) similarity);
+
         }
 
-        Collections.sort(similarities);     // remember sort() sorts in ascending order
+        Collections.sort(similarities, Collections.reverseOrder());    // by default, sort() sorts in ascending order - smallest distances first
         System.out.println(similarities);
 
-        showtop(similarities, 3);
+        showtop(similarities, 10);                              // The most similar are at the top
     }
 
+    /**
+     * getEmbeddingVec(EmbeddingModel model, String input)
+     * @param model - specific EmbeddingModel to use
+     * @param input - target string
+     * @return - List<Float> - actual embedding vector
+     */
     public static List<Float> getEmbeddingVec(EmbeddingModel model, String input) {
         Response<dev.langchain4j.data.embedding.Embedding> response = model.embed(input);
         return response.content().vectorAsList();
     }
 
+    /**
+     * showtop(List<Float> sim, int max)
+     * @param sim - embedding vector - List<Float>
+     * @param max - how many you want to show
+     */
     public static void showtop(List<Float> sim, int max) {
         System.out.println("Top " + max + " =====================");
+        /*  For those students who have not covered lambdas yet
         for (int i = 0; i < max; i++) {
             System.out.println(sim.get(i));
-        }
+        }*/
+        IntStream.range(0, max)
+                .forEach(i -> System.out.println(sim.get(i)));
     }
 
     /**
-     * fileToListStrings() - read a text file into a List of Strings
-     * @param fname
-     * @return
+     * dotProduct(double[] vec1, double[] vec2) - Calculate dot product for two 1-D arrays
+     * @param vec1 - first 1-dimensional array
+     * @param vec2 - second 1-dimensional array
+     * @return - dot product
      */
-    public static List<String> fileToListStrings(String fname) {
-        List<String> lines = new ArrayList<>();
-        try (BufferedReader reader = new BufferedReader(new FileReader(fname))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                lines.add(line);
-            }
-        } catch (IOException e) {
-            System.err.println("Error reading file: " + e.getMessage());
-        }
-        return lines;
-    }
     public static double dotProduct(double[] vec1, double[] vec2) {
         double dotProduct = 0;
         for (int i = 0; i < vec1.length; i++) {
@@ -80,7 +88,11 @@ public class MostSimilar {
         return dotProduct;
     }
 
-    // Function to calculate magnitude of a vector
+    /**
+     * magnitude(double[] vec) - Calculate magnitude of a 1-dimensional vector
+     * @param vec - desired vector
+     * @return magnitude
+     */
     public static double magnitude(double[] vec) {
         double sum = 0;
         for (double v : vec) {
@@ -89,7 +101,12 @@ public class MostSimilar {
         return Math.sqrt(sum);
     }
 
-    // Function to calculate cosine similarity between two embedding vectors
+    /**
+     * cosineSimilarity(double[] vec1, double[] vec2) - Calculate cosine similarity between two embedding vectors
+     * @param vec1 - first vector
+     * @param vec2 - second vector
+     * @return - similarity [0 - least similar] to [1 - most similar]
+     */
     public static double cosineSimilarity(double[] vec1, double[] vec2) {
         double dotProduct = dotProduct(vec1, vec2);
         double magnitudeVec1 = magnitude(vec1);
@@ -101,6 +118,12 @@ public class MostSimilar {
             return dotProduct / (magnitudeVec1 * magnitudeVec2);
         }
     }
+
+    /**
+     * FloatList2doubleArray(List<Float> floatlist) - utility method to convert List of Floats to array of doubles
+     * @param floatList - target List of Floats
+     * @return equivalent array of doubles
+     */
     public static double[] FloatList2doubleArray(List<Float> floatList) {
         double[] result = new double[floatList.size()];
         for (int i = 0; i < floatList.size(); i++) {
