@@ -1,5 +1,5 @@
-# COURSENAME
-This is the rrepository for the LinkedIn Learning course `course-name`. The full course is available from [LinkedIn Learning][lil-course-url].
+# Beyond the Basics: Building Generative AI Java Applications using LangChain4j
+This is the rrepository for the LinkedIn Learning course `Beyond the Basics: Building Generative AI Java Applications using LangChain4j`. The full course is available from [LinkedIn Learning][lil-course-url].
 
 ![lil-thumbnail-url]
 
