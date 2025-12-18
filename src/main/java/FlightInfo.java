@@ -16,6 +16,7 @@ public class FlightInfo {
                 .apiKey(System.getenv("OPENAI_API_KEY"))
                 .modelName(OpenAiChatModelName.GPT_4_O)
                 .logRequests(true)
+                .temperature(0.7)
                 .build();
 
         ChatMemory cm = MessageWindowChatMemory.withMaxMessages(10);
